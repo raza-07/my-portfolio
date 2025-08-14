@@ -6,10 +6,11 @@ import { projectData } from "@/Data/projectData";
 import Link from "next/link";
 import { Toaster } from "react-hot-toast";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import GradientSectionWrapper from "@/components/GradientSectionWrapper";
 
 export default function ContactPage() {
   return (
-    <section className="min-h-screen py-20 px-6 bg-gradient-to-br from-black via-gray-900 to-gray-950 text-gray-100">
+    <GradientSectionWrapper id="contact" className="py-20 px-6 text-gray-100">
       <Toaster position="top-center" reverseOrder={false} />
       <h2 className="text-3xl font-bold text-center text-blue-400 mb-10">
         Let’s Work Together
@@ -39,10 +40,10 @@ export default function ContactPage() {
             <p className="text-sm text-gray-400">
               Email:{" "}
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:arrazarao@gmail.com"
                 className="text-blue-300 hover:text-blue-400 hover:underline"
               >
-                your.email@example.com
+                arrazarao@gmail.com
               </a>
             </p>
             <p className="text-sm text-gray-400">
@@ -63,7 +64,7 @@ export default function ContactPage() {
                 />
               </Link>
               <Link
-                href="https://www.linkedin.com/in/muhammad-a-a84975229/"
+                href="https://www.linkedin.com/in/muhammadalirazarao/"
                 target="_blank"
               >
                 <FaLinkedin
@@ -81,6 +82,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-    </section>
+    </GradientSectionWrapper>
   );
 }

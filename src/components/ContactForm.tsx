@@ -16,11 +16,25 @@ export default function ContactForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Simulate message send
-    toast.success("🚀 Message Sent Successfully!");
+    const whatsappPhone = "923044573944"; // International format without '+'
+    const composedMessage = `Hi Ali Raza,\n\nName: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}\n\nSent from your portfolio website.`;
+    const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(composedMessage)}`;
+
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(composedMessage);
+        toast.success("Message copied. Opening WhatsApp…");
+      } else {
+        toast("Opening WhatsApp. Copy your message manually if needed.");
+      }
+    } catch (error) {
+      toast("Opening WhatsApp. Copy your message manually if needed.");
+    }
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     setFormData({ name: "", email: "", message: "" });
   };
 

@@ -1,6 +1,7 @@
 "use client";
 
 import ServiceCard from "@/components/ServiceCard";
+import GradientSectionWrapper from "@/components/GradientSectionWrapper";
 
 const services = [
   {
@@ -47,12 +48,12 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="min-h-screen px-6 py-20 bg-gradient-to-br from-black via-gray-900 to-gray-950 text-white">
+    <GradientSectionWrapper id="services" className="px-6 py-20 text-white">
       <h2 className="text-3xl font-bold text-center text-teal-300 mb-12">
         Services
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto justify-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto justify-center items-stretch">
         {services.map((service, index) => (
           <ServiceCard
             key={index}
@@ -61,6 +62,6 @@ export default function Services() {
           />
         ))}
       </div>
-    </section>
+    </GradientSectionWrapper>
   );
 }

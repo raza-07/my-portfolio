@@ -4,31 +4,46 @@
 import { useRef, useEffect } from "react";
 import { testimonialData } from "@/Data/testimonialData";
 import TestimonialCard from "@/components/TestimonialCard";
+import GradientSectionWrapper from "@/components/GradientSectionWrapper";
 
 export default function TestimonialPage() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const pausedRef = useRef<boolean>(false);
 
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
 
-    let scrollX = 0;
     const speed = 0.7;
-    const maxScroll = container.scrollWidth - container.clientWidth;
+    let frameId = 0;
 
-    const autoScroll = () => {
-      scrollX += speed;
-      if (scrollX >= maxScroll) scrollX = 0;
-      container.scrollLeft = scrollX;
-      requestAnimationFrame(autoScroll);
+    const step = () => {
+      if (!scrollRef.current) return;
+      const el = scrollRef.current;
+
+      if (!pausedRef.current && el.scrollWidth > el.clientWidth) {
+        el.scrollLeft += speed;
+        const halfWidth = el.scrollWidth / 2;
+        if (el.scrollLeft >= halfWidth) {
+          el.scrollLeft -= halfWidth; // wrap seamlessly at midpoint
+        }
+      }
+
+      frameId = requestAnimationFrame(step);
     };
 
-    const animationId = requestAnimationFrame(autoScroll);
-    return () => cancelAnimationFrame(animationId);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // If user prefers reduced motion, do not animate
+      return;
+    }
+    frameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frameId);
   }, []);
 
+  const items = [...testimonialData, ...testimonialData];
+
   return (
-    <section className="min-h-screen px-6 py-20 bg-gradient-to-br from-black via-gray-900 to-gray-950 text-white">
+    <GradientSectionWrapper id="testimonial" className="px-6 py-20 text-white">
       <h2 className="text-3xl font-bold text-center text-fuchsia-300 mb-16">
         What People Say About Me
       </h2>
@@ -36,16 +51,20 @@ export default function TestimonialPage() {
       <div className="flex justify-center">
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto max-w-7xl pb-4"
+          className="flex gap-6 overflow-x-auto overflow-y-visible max-w-7xl pb-4"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
           }}
+          onMouseEnter={() => (pausedRef.current = true)}
+          onMouseLeave={() => (pausedRef.current = false)}
+          onTouchStart={() => (pausedRef.current = true)}
+          onTouchEnd={() => (pausedRef.current = false)}
         >
-          {testimonialData.map((testimonial, index) => (
+          {items.map((testimonial, index) => (
             <div
               key={index}
-              className="min-w-[280px] md:min-w-[300px] lg:min-w-[320px] bg-gray-900 rounded-2xl shadow-xl p-6 transition-transform duration-300 hover:scale-105 hover:bg-fuchsia-900/30"
+              className="w-[260px] sm:w-[280px] md:w-[300px] lg:w-[320px] flex-shrink-0"
             >
               <TestimonialCard {...testimonial} />
             </div>
@@ -58,6 +77,6 @@ export default function TestimonialPage() {
           display: none;
         }
       `}</style>
-    </section>
+    </GradientSectionWrapper>
   );
 }

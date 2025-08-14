@@ -9,7 +9,7 @@ import QuoteBox from "@/components/QuoteBox";
 
 export default function About() {
   return (
-    <GradientSectionWrapper>
+    <GradientSectionWrapper id="about">
       <ProfileImageWithFrame src="/my2.webp" />
 
       <GradientHeading text="Journey" />

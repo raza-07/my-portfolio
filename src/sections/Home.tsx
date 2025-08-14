@@ -45,7 +45,7 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="min-h-screen px-6 py-20 flex flex-col md:flex-row items-center justify-between bg-gradient-to-br from-black via-gray-900 to-gray-950 text-gray-100 relative overflow-hidden"
+      className="min-h-screen px-6 py-20 flex flex-col md:flex-row items-center justify-between bg-transparent text-gray-100 relative overflow-hidden"
     >
       {/* LEFT */}
       <div className="flex-1 z-10 space-y-6 max-w-xl">
@@ -87,7 +87,7 @@ export default function Home() {
             { platform: "github", url: "https://github.com/raza-07" },
             {
               platform: "linkedin",
-              url: "https://linkedin.com/in/muhammad-a-a84975229",
+              url: "https://linkedin.com/in/muhammadalirazarao/",
             },
             { platform: "instagram", url: "https://instagram.com/arrao07" },
           ]}

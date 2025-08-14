@@ -7,7 +7,7 @@ import { experienceData } from "@/Data/experienceData";
 
 export default function Experience() {
   return (
-    <GradientSectionWrapper>
+    <GradientSectionWrapper id="experience">
       <h2 className="text-3xl font-bold text-center text-orange-300 mb-12">
         Experience
       </h2>
