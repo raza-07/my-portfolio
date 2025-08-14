@@ -68,10 +68,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row gap-3">
           <CustomButton
             text="My Work"
-            onClick={() => {
-              const el = document.getElementById("projects");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
+            href="https://github.com/raza-07?tab=repositories"
             color="amber"
           />
 
