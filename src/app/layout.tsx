@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { FiHome, FiUser, FiBriefcase, FiGrid, FiMessageCircle, FiSend } from "react-icons/fi";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,14 +33,30 @@ export default function RootLayout({
           <nav className="sticky top-0 z-50 backdrop-blur-sm/0">
             <div className="max-w-7xl mx-auto px-6 py-4 flex justify-end">
               <div className="flex items-center gap-4 text-sm">
-                <a href="#home" className="px-3 py-1 rounded transition-colors group">
-                  <span className="text-gray-200 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-fuchsia-400 group-hover:via-orange-400 group-hover:to-amber-400">Home</span>
+                <a href="#home" className="px-3 py-1 rounded transition-colors group inline-flex items-center gap-2">
+                  <FiHome size={16} className="text-gray-300 group-hover:text-amber-300" />
+                  <span className="hidden sm:inline text-gray-200 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-fuchsia-400 group-hover:via-orange-400 group-hover:to-amber-400">Home</span>
                 </a>
-                <a href="#about" className="px-3 py-1 rounded hover:text-fuchsia-300 hover:bg-fuchsia-300/10 transition-colors">About Me</a>
-                <a href="#experience" className="px-3 py-1 rounded hover:text-orange-300 hover:bg-orange-300/10 transition-colors">Experience</a>
-                <a href="#services" className="px-3 py-1 rounded hover:text-teal-300 hover:bg-teal-300/10 transition-colors">Services</a>
-                <a href="#testimonial" className="px-3 py-1 rounded hover:text-pink-300 hover:bg-pink-300/10 transition-colors">Testimonial</a>
-                <a href="#contact" className="px-3 py-1 rounded hover:text-blue-300 hover:bg-blue-300/10 transition-colors">Contact</a>
+                <a href="#about" className="px-3 py-1 rounded hover:text-fuchsia-300 hover:bg-fuchsia-300/10 transition-colors inline-flex items-center gap-2">
+                  <FiUser size={16} />
+                  <span className="hidden sm:inline">About</span>
+                </a>
+                <a href="#experience" className="px-3 py-1 rounded hover:text-orange-300 hover:bg-orange-300/10 transition-colors inline-flex items-center gap-2">
+                  <FiBriefcase size={16} />
+                  <span className="hidden sm:inline">Experience</span>
+                </a>
+                <a href="#services" className="px-3 py-1 rounded hover:text-teal-300 hover:bg-teal-300/10 transition-colors inline-flex items-center gap-2">
+                  <FiGrid size={16} />
+                  <span className="hidden sm:inline">Services</span>
+                </a>
+                <a href="#testimonial" className="px-3 py-1 rounded hover:text-pink-300 hover:bg-pink-300/10 transition-colors inline-flex items-center gap-2">
+                  <FiMessageCircle size={16} />
+                  <span className="hidden sm:inline">Testimonial</span>
+                </a>
+                <a href="#contact" className="px-3 py-1 rounded hover:text-blue-300 hover:bg-blue-300/10 transition-colors inline-flex items-center gap-2">
+                  <FiSend size={16} />
+                  <span className="hidden sm:inline">Contact / Hire</span>
+                </a>
               </div>
             </div>
           </nav>
